@@ -15,7 +15,8 @@
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-query": "^3.27.0"
+    "react-query": "^3.27.0",
+    "zustand": "^3.5.14"
   },
   "devDependencies": {
     "@types/node": "^16.11.0",
