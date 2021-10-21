@@ -1,19 +1,65 @@
-import { useState } from "react";
-import { ref, uploadBytes } from "firebase/storage";
-import { fireStorage } from "../configuration/fire";
+import { useEffect, useState } from "react";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
+import { fireStorage, fireStore } from "../configuration/fire";
 
 import useStore from "../zust/zusfig";
 const UploadForm = () => {
-  const { selectedFileName, setSelectedFileName } = useStore();
+  const {
+    selectedFileName,
+    setSelectedFileName,
+    imageReturnUrl,
+    setImageReturnUrl,
+  } = useStore();
   const [error, setError] = useState("");
+  useEffect(() => {
+    const writeFile = async () => {
+      if (imageReturnUrl) {
+        console.log("imageReturnUrl", imageReturnUrl);
+        try {
+          let ms = new Date();
+          let data: Object = {};
+          data["imageAdress"] = imageReturnUrl;
+          data["timestrap"] = ms;
+          await setDoc(doc(fireStore, "filesadress", ms.toString()), data);
+          console.log("writeFile");
+        } catch (error) {
+          console.log("there was a error", error);
+        }
+      }
+    };
+    writeFile();
+  }, [imageReturnUrl]);
 
   const handleButtonClick = () => {
-    console.log(selectedFileName);
     if (selectedFileName) {
       const storageRef = ref(fireStorage, "images/" + selectedFileName["name"]);
-      uploadBytes(storageRef, selectedFileName).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
-      });
+      const uploadTask = uploadBytesResumable(storageRef, selectedFileName);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          // Handle successful uploads on complete
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageReturnUrl(downloadURL);
+          });
+        }
+      );
     }
   };
   const handleChange = (e: any) => {
@@ -32,7 +78,6 @@ const UploadForm = () => {
     <div>
       <input type="file" onChange={handleChange} />
       <button onClick={handleButtonClick}>click</button>
-      {selectedFileName && <p>{selectedFileName["name"]}</p>}
       {error && <p>{error}</p>}
     </div>
   );
