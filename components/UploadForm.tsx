@@ -20,7 +20,7 @@ const UploadForm = () => {
           let ms = new Date();
           let data: Object = {};
           data["imageAdress"] = imageReturnUrl;
-          data["timestrap"] = ms;
+          data["timestrap"] = ms.toString();
           await setDoc(doc(fireStore, "filesadress", ms.toString()), data);
           console.log("writeFile");
         } catch (error) {
