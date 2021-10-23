@@ -1,26 +1,36 @@
-import Image from "next/image";
+import Masonry from "react-masonry-css";
+
+
 const ImagesLists = ({ posts }) => {
-  console.log(posts);
+  
+  const images = posts.map((post) => post.imageAdress);
+  
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
   return (
     <>
       <div>
-        <h1>Images</h1>
-        <div className="grid grid-cols-3 gap-3">
-          {posts.map((value, i) => (
-            <div className="bordered shadow-md hover:shadow-2xl" key={i}>
-              <figure>
-                <div className="h-64 w-full relative">
-                  <Image
-                    src={value.imageAdress}
-                    alt="Picture of the author"
-                    layout="fill" // required
-                    objectFit="cover" // change to suit your needs
-                    className="" // just an example
+        <div className="center-masonry">
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {posts.map((post, i) => {
+              return (
+                <div key={i} >
+                  <img
+                    src={post.imageAdress}
+                    alt="dd"
                   />
                 </div>
-              </figure>
-            </div>
-          ))}
+              );
+            })}
+          </Masonry>
         </div>
       </div>
     </>
