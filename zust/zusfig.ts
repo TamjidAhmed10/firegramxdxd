@@ -4,6 +4,8 @@ interface proptypes {
   setSelectedFileName: any;
   imageReturnUrl: string;
   setImageReturnUrl: any;
+  toggle: any;
+  setToggle: any;
 }
 const useStore = create<proptypes>((set) => ({
   selectedFileName: {},
@@ -15,6 +17,11 @@ const useStore = create<proptypes>((set) => ({
   setImageReturnUrl: (imageReturnUrl) =>
     set((state) => ({
       imageReturnUrl,
+    })),
+  toggle: false,
+  setToggle: (toggle) =>
+    set((state) => ({
+      toggle,
     })),
 }));
 export default useStore;

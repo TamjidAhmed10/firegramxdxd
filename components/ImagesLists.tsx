@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Masonry from "react-masonry-css";
 import { useState } from "react";
+import  UseStore  from "../zust/zusfig";
 const ImagesLists = ({ posts }) => {
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
+  const {toggle , setToggle} = UseStore();
   const [urlLink, setUrlLink] = useState("");
   const breakpointColumnsObj = {
     default: 4,
