@@ -13,7 +13,9 @@ const ImagesLists = ({ posts }) => {
   return (
     <>
       <div>
-        <div className="center-masonry mx-2">
+        <div
+          className={"center-masonry mx-2 " }
+        >
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
@@ -23,31 +25,26 @@ const ImagesLists = ({ posts }) => {
               return (
                 <div
                   key={i}
-                  className="rounded-3xl	"
+                  className={(toggle ? "filter blur-lg" : "")}
                   onClick={() => {
                     setToggle(true);
                     setUrlLink(post.imageAdress);
                   }}
                 >
-                  <img
-                    src={post.imageAdress}
-                    alt="dd"
-                    className="rounded-lg	"
-                  />
+                  <img src={post.imageAdress} alt="dd" className="rounded-lg	" />
                 </div>
               );
             })}
           </Masonry>
           {toggle && (
             <div
-              className="fixed bg-black  bg-opacity-80 inset-0 flex justify-center items-center z-80 "
+              className="fixed bg-black  bg-opacity-60 inset-0 flex justify-center items-center z-80"
               onClick={() => {
                 setToggle(false);
               }}
             >
               <div className="relative max-w-xs sm:max-w-sm md:max-w-3xl ">
-                
-                <img src={urlLink} alt="yoo" className=" rounded-xl "/>
+                <img src={urlLink} alt="yoo" className=" rounded-xl " />
               </div>
             </div>
           )}

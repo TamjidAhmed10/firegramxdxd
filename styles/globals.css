@@ -31,3 +31,14 @@
 .center-masonry {
   /* background: rgb(233, 232, 232); */
 }
+body {
+ background:rgba(255, 255, 255, 0.58);
+  background-repeat: repeat;
+ 
+}
+.cont{background: rgba(255, 255, 255, 0.58);
+
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.3px);
+-webkit-backdrop-filter: blur(6.3px);
+border: 1px solid rgba(255, 255, 255, 0.49);}
