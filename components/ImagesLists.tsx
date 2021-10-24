@@ -15,9 +15,7 @@ const ImagesLists = ({ posts }) => {
   return (
     <>
       <div>
-        <div
-          className={"center-masonry mx-2 " }
-        >
+        <div className={"center-masonry mx-2 "}>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
@@ -27,7 +25,7 @@ const ImagesLists = ({ posts }) => {
               return (
                 <div
                   key={i}
-                  className={(toggle ? "filter blur-lg" : "")}
+                  className={toggle ? "filter blur-lg" : ""}
                   onClick={() => {
                     setToggle(true);
                     setUrlLink(post.imageAdress);
@@ -45,8 +43,12 @@ const ImagesLists = ({ posts }) => {
                 setToggle(false);
               }}
             >
-              <div className="relative max-w-xs sm:max-w-sm md:max-w-3xl ">
-                <img src={urlLink} alt="yoo" className=" rounded-xl " />
+              <div className="relative ">
+                <img
+                  src={urlLink}
+                  alt="yoo"
+                  className=" object-contain h-screen p-8 w-full rounded-xl "
+                />
               </div>
             </div>
           )}
