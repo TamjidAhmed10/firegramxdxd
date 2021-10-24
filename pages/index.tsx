@@ -1,15 +1,17 @@
-import { useState } from "react";
-import ImagesLists from "../components/ImagesLists";
 
-import UploadForm from "../components/UploadForm";
+import Footer from "../components/Footer";
+import ImagesLists from "../components/ImagesLists";
+import Navbar from "../components/Navbar";
 import getAllThePosts from "../functions/getAllThePost";
 const Home = ({posts}) => {
   return (
     <div>
+      <Navbar />
       <div className="max-w-5xl mx-auto">
-        <UploadForm />
-        <ImagesLists posts={posts}/>
+        
+        <ImagesLists posts={posts} />
       </div>
+      <Footer/>
     </div>
   );
 };

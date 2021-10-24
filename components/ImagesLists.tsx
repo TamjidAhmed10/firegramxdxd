@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Masonry from "react-masonry-css";
 import { useState } from "react";
 const ImagesLists = ({ posts }) => {

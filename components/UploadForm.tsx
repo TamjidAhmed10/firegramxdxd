@@ -75,10 +75,19 @@ const UploadForm = () => {
     }
   };
   return (
-    <div>
-      <input type="file" onChange={handleChange} />
-      <button onClick={handleButtonClick}>click</button>
-      {error && <p>{error}</p>}
+    <div className=" flex h-screen">
+      <div className="mx-auto mt-48 max-w-sm">
+        <div className="">
+          <input type="file" onChange={handleChange} />
+          <button
+            onClick={handleButtonClick}
+            className="btn btn-md btn-secondary"
+          >
+            click
+          </button>
+          {error && <p>{error}</p>}
+        </div>
+      </div>
     </div>
   );
 };
