@@ -44,7 +44,11 @@ const ImagesLists = ({ posts }) => {
               }}
             >
               <div className="relative ">
-                <img src={urlLink} alt="yoo" className=" h-screen p-8 w-full" />
+                <img
+                  src={urlLink}
+                  alt="yoo"
+                  className=" object-contain h-screen p-8 w-full"
+                />
               </div>
             </div>
           )}
