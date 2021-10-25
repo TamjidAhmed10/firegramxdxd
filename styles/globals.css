@@ -32,11 +32,10 @@
   /* background: rgb(233, 232, 232); */
 }
 body {
-  background: rgba(255, 255, 206   ,1);
-
+  background: rgba(255, 255, 206, 1);
 }
 .cont {
-  background: rgba(233, 239, 255 , 0.48);
+  background: rgba(233, 239, 255, 0.68);
 
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.49);

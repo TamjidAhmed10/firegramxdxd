@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Masonry from "react-masonry-css";
 import { useState } from "react";
-import  UseStore  from "../zust/zusfig";
+import UseStore from "../zust/zusfig";
 const ImagesLists = ({ posts }) => {
   // const [toggle, setToggle] = useState(false);
-  const {toggle , setToggle} = UseStore();
+  const { toggle, setToggle } = UseStore();
   const [urlLink, setUrlLink] = useState("");
   const breakpointColumnsObj = {
     default: 4,
@@ -44,11 +44,7 @@ const ImagesLists = ({ posts }) => {
               }}
             >
               <div className="relative ">
-                <img
-                  src={urlLink}
-                  alt="yoo"
-                  className=" object-contain h-screen p-8 w-full rounded-xl "
-                />
+                <img src={urlLink} alt="yoo" className=" h-screen p-8 w-full" />
               </div>
             </div>
           )}
