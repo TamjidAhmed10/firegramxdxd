@@ -11,6 +11,7 @@
   padding-left: 10px; /* gutter size */
   background-clip: padding-box;
 }
+
 /* Style your items */
 .my-masonry-grid_column > div {
   margin-bottom: 10px;
@@ -18,14 +19,13 @@
 }
 .my-masonry-grid_column > div > img {
   width: 100%;
-  border-radius: 2px;
   position: relative;
-  transition: all 0.1s ease;
+  transition: all 0.3s ease;
   filter: brightness(80%);
 }
 .my-masonry-grid_column > div > img:hover {
   filter: brightness(100%);
-  transform: scale(1.01);
+  transform: scale(1.009);
   box-shadow: 0px 0px 5px 2px rgb(48, 47, 47);
 }
 .center-masonry {
@@ -39,4 +39,15 @@ body {
 
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.49);
+}
+@media (max-width: 600px) {
+  .my-masonry-grid_column {
+    padding-left: 0px;
+    background-clip: padding-box;
+  }
+  .my-masonry-grid_column > div > img {
+    width: 100%;
+    position: relative;
+    filter: brightness(80%);
+  }
 }
